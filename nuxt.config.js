@@ -7,19 +7,19 @@ function getProjectLogo(projectID) {
 }
 module.exports = {
   head: {
-    title: '→沃草←',
+    title: '→沃草←公民學院',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: '沃草是⋯', hid: 'description' }
+      { name: 'description', content: '沃草《公民學院》是⋯', hid: 'description' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: getFavicon('watchout') },
-      { rel: 'apple-touch-icon', sizes: '256x256', href: getProjectLogo('watchout') }
+      { rel: 'icon', type: 'image/x-icon', href: getFavicon('uc') },
+      { rel: 'apple-touch-icon', sizes: '256x256', href: getProjectLogo('uc') }
     ]
   },
   loading: {
-    color: '#E6A353',
+    color: '#A4DB56',
     height: '4px'
   },
   build: {
@@ -46,7 +46,7 @@ module.exports = {
     }
   },
   modules: [
-    ['@nuxtjs/google-tag-manager', { id: 'GTM-NNQFKZ5' }]
+    ['@nuxtjs/google-tag-manager', { id: 'GTM-TTFPLQ3' }]
   ]
   // NOTE: Add Markdown loader <https://github.com/nuxt/nuxt.js/issues/1072>
 }

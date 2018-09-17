@@ -20,7 +20,7 @@ export default {
   mixins: [knowsWindowManagement],
   data() {
     return {
-      channel: env.channels.park
+      channel: env.channels.uc
     }
   },
   components: {

@@ -1,13 +1,13 @@
 {
-  "name": "fuji",
+  "name": "atolan",
   "version": "1.0.0",
-  "description": "Build Watchout services with nuxt.js",
+  "description": "University of the Citizens",
   "author": "Department of Technology at Watchout <dev@watchout.tw>",
   "private": true,
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "8090"
+      "port": "9210"
     }
   },
   "scripts": {
