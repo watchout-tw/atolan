@@ -7,7 +7,7 @@ function getProjectLogo(projectID) {
 }
 module.exports = {
   head: {
-    title: '→沃草←公民學院',
+    title: '沃草公民學院',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
