@@ -11,7 +11,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: '沃草《公民學院》是⋯', hid: 'description' }
+      { name: 'description', content: '沃草公民學院是⋯', hid: 'description' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: getFavicon('uc') },
