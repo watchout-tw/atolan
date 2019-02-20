@@ -1,11 +1,12 @@
 <template>
 <div class="page read single">
   <doc-header :doc="doc" :cachedAuthors="cachedAuthors" />
-  <ghost-article :article="doc.content" :footnotes="footnotes" :links="links" :references="references" :data="dataOnReferences" />
+  <ghost-article :article="doc.content" :links="links" :footnotes="footnotes" :references="references" :data="dataOnReferences" />
   <div class="share margin-top-bottom-double">
     <div class="section-title with-underline text-align-center margin-top-bottom-single"><span>認同請分享</span></div>
     <share-to-platforms :url="shareURL" />
   </div>
+  <after-article :links="links" :footnotes="footnotes" :references="references" :data="dataOnReferences" />
 </div>
 </template>
 
@@ -17,6 +18,7 @@ import { mobiledocProcessor } from 'watchout-common-functions/lib/bunko'
 import DocHeader from 'watchout-common-functions/components/comp/DocHeader'
 import GhostArticle from 'watchout-common-functions/components/ghost/Article'
 import ShareToPlatforms from 'watchout-common-functions/components/ShareToPlatforms'
+import AfterArticle from 'watchout-common-functions/components/ghost/AfterArticle'
 import defaultCoverImage from 'watchout-common-assets/images/default-cover-images/uc-2-1.jpg'
 
 export default {
@@ -51,7 +53,8 @@ export default {
   components: {
     DocHeader,
     GhostArticle,
-    ShareToPlatforms
+    ShareToPlatforms,
+    AfterArticle
   }
 }
 </script>
