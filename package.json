@@ -39,13 +39,8 @@
     "eslint-plugin-promise": ">=4.0.1",
     "eslint-plugin-standard": ">=4.0.0",
     "eslint-plugin-vue": "^5.2.2",
-    "css-loader": "^0.28.0",
-    "html-loader": "^0.5.5",
     "node-sass": "^4.11.0",
     "sass-loader": "^8.0.2",
-    "url-loader": "^1.1.1",
-    "vue-loader": "^12.1.0",
-    "vue-style-loader": "^3.0.1",
     "watchout-common-assets": "file:../watchout-common-assets",
     "watchout-common-functions": "file:../watchout-common-functions"
   }
