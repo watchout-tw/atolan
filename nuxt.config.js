@@ -24,10 +24,14 @@ module.exports = {
   },
   build: {
     vender: ['axios', 'vuex'],
+    transpile: [
+      'watchout-common-assets',
+      'watchout-common-functions'
+    ],
     /*
     ** Run ESLint on save
     */
-    extend(config, { isDev, isClient, isServer }) {
+    extend(config, { isDev, isClient }) {
       if(isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -35,13 +39,6 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-      if(isServer) {
-        config.externals = [
-          nodeExternals({
-            whitelist: [/^watchout-common/]
-          })
-        ]
       }
     }
   },
