@@ -28,25 +28,15 @@ module.exports = {
       'watchout-common-assets',
       'watchout-common-functions'
     ],
-    /*
-    ** Run ESLint on save
-    */
-    extend(config, { isDev, isClient }) {
-      if(isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
   },
   plugins: [
     '~/plugins/firestore.js'
   ],
   modules: [
-    ['@nuxtjs/google-tag-manager', { id: 'GTM-TTFPLQ3' }]
-  ]
+    '@nuxtjs/gtm',
+  ],
+  gtm: {
+    id: 'GTM-TTFPLQ3'
+  },
   // NOTE: Add Markdown loader <https://github.com/nuxt/nuxt.js/issues/1072>
 }
