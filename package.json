@@ -38,7 +38,7 @@
     "eslint-plugin-jest": ">=21.24.1",
     "eslint-plugin-node": ">=7.0.1",
     "eslint-plugin-promise": ">=4.0.1",
-    "eslint-plugin-vue": "^5.2.2",
+    "eslint-plugin-vue": "^7.7.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^10.0.1",
     "watchout-common-assets": "file:../watchout-common-assets",
