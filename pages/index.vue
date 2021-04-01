@@ -9,7 +9,7 @@
     <reference-preview :reference="docRefs[0]" :data="dataOnReferences" display="tcl" :show-pub-dest="true" :cachedAuthors="cachedAuthors" />
   </div>
   <div class="docs tcl-container margin-top-bottom-4">
-    <div class="doc tcl-panel tcl-left-right-margin with-top-bottom-margin" :class="{ 'half-width': index >= 4 }" v-for="(docRef, index) of docRefs" :key="index" v-if="index > 0">
+    <div class="doc tcl-panel tcl-left-right-margin with-top-bottom-margin" :class="{ 'half-width': index >= 3 }" v-for="(docRef, index) of docRefsExceptFirst" :key="index">
       <reference-preview :reference="docRef" :data="dataOnReferences" display="vertical" :show-pub-dest="true" :cachedAuthors="cachedAuthors" />
     </div>
     <div class="tcl-panel half-width"></div>
@@ -50,6 +50,11 @@ export default {
     return {
       title: pageTitle,
       meta: this.generateMeta('uc', pageTitle, pageDescription, defaultCoverImage)
+    }
+  },
+  computed: {
+    docRefsExceptFirst() {
+      return this.docRefs.slice(0, this.docRefs.length)
     }
   },
   methods: {
