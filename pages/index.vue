@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     docRefsExceptFirst() {
-      return this.docRefs.slice(0, this.docRefs.length)
+      return this.docRefs.slice(1, this.docRefs.length)
     }
   },
   methods: {
