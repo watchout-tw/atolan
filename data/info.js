@@ -1,3 +1,4 @@
+export const COMPANY_TITLE = '沃草'
 export const SITE_TITLE = '沃草公民學院'
 export const SITE_DESCRIPTION = '沃草公民學院是⋯'
 export const L_DOUBLE_BRACKET = '《'

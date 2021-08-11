@@ -16,7 +16,7 @@ import * as info from '~/data/info'
 export default {
   mixins: [knowsWatchout],
   head() {
-    const pageTitle = '閱讀' + info.SEPARATOR + info.SITE_TITLE
+    const pageTitle = '閱讀' + info.SEPARATOR + info.COMPANY_TITLE
     const pageDescription = info.SITE_DESCRIPTION
     return {
       title: pageTitle,
