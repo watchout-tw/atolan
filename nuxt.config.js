@@ -1,10 +1,43 @@
-const nodeExternals = require('webpack-node-externals')
+import * as firestore from 'watchout-common-functions/lib/firestore'
+import * as util from 'watchout-common-functions/lib/util'
+import * as watchout from 'watchout-common-functions/lib/watchout'
+const info = require('./data/info')
+
 function getFavicon(projectID) {
   return 'https://raw.githubusercontent.com/watchout-tw/watchout-common-assets/master/images/logo/' + projectID + '/small.png'
 }
 function getProjectLogo(projectID) {
   return 'https://raw.githubusercontent.com/watchout-tw/watchout-common-assets/master/images/logo/' + projectID + '/large.png'
 }
+
+async function getSitemap() {
+  let routes = []
+  let pubDest = info.CHANNEL_ID
+  await firestore.sys.init({})
+  let docs = await firestore.bunko.getDocs({ pubDest, limit: -1 })
+  routes = routes.concat(docs.map(doc => {
+    return {
+      url: `/read/${doc.id}`,
+      changefreq: 'monthly',
+      lastmod: util.fsTSToDateObj(doc.contentUpdatedAt || doc.publishedAt)
+    }
+  }))
+  let latestDoc = docs.reduce((prev, curr) => {
+    return util.fsTSCompare(prev.contentUpdatedAt || prev.publishedAt, curr.contentUpdatedAt || curr.publishedAt) > 0 ? prev : curr
+  })
+
+  return {
+    hostname: watchout.getBaseURL('uc'),
+    gzip: true,
+    exclude: [],
+    defaults: {
+      changefreq: 'weekly',
+      lastmod: util.fsTSToDateObj(latestDoc.contentUpdatedAt || latestDoc.publishedAt)
+    },
+    routes: routes
+  }
+}
+
 module.exports = {
   head: {
     title: '沃草公民學院',
@@ -27,16 +60,28 @@ module.exports = {
     transpile: [
       'watchout-common-assets',
       'watchout-common-functions'
-    ],
+    ]
   },
   plugins: [
     '~/plugins/firestore.js'
   ],
   modules: [
     '@nuxtjs/gtm',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap'
   ],
   gtm: {
     id: 'GTM-TTFPLQ3'
   },
+  robots: [
+    {
+      UserAgent: '*',
+      Allow: '/', // accepts function
+      Sitemap: watchout.getBaseURL('uc')
+    }
+  ],
+  sitemap: async function() {
+    return await getSitemap()
+  }
   // NOTE: Add Markdown loader <https://github.com/nuxt/nuxt.js/issues/1072>
 }

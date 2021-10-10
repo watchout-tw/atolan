@@ -56,7 +56,4 @@ export default {
 
 <style lang="scss">
 @import '~watchout-common-assets/styles/resources';
-
-.page.read.single {
-}
 </style>
