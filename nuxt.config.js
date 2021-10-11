@@ -1,6 +1,7 @@
 import * as firestore from 'watchout-common-functions/lib/firestore'
 import * as util from 'watchout-common-functions/lib/util'
 import * as watchout from 'watchout-common-functions/lib/watchout'
+import config from 'watchout-common-functions/config/config'
 const info = require('./data/info')
 
 function getFavicon(projectID) {
@@ -38,6 +39,19 @@ async function getSitemap() {
   }
 }
 
+function getRobotsTXT() {
+  let allow = {
+    UserAgent: '*',
+    Allow: '/', // accepts function
+    Sitemap: watchout.getBaseURL('uc')
+  }
+  let notallow = {
+    UserAgent: '*',
+    Disallow: '/' // accepts function
+  }
+  return [].push(config.env === 'production' ? allow : notallow)
+}
+
 module.exports = {
   head: {
     title: '沃草公民學院',
@@ -73,13 +87,7 @@ module.exports = {
   gtm: {
     id: 'GTM-TTFPLQ3'
   },
-  robots: [
-    {
-      UserAgent: '*',
-      Allow: '/', // accepts function
-      Sitemap: watchout.getBaseURL('uc')
-    }
-  ],
+  robots: getRobotsTXT(),
   sitemap: async function() {
     return await getSitemap()
   }
