@@ -1,6 +1,6 @@
 export const COMPANY_TITLE = '沃草'
 export const SITE_TITLE = '沃草公民學院'
-export const SITE_DESCRIPTION = '沃草公民學院是⋯'
+export const SITE_DESCRIPTION = '一個致力於推廣人文普及、促進公共討論發展的網路平台與社群。'
 export const L_DOUBLE_BRACKET = '《'
 export const R_DOUBLE_BRACKET = '》'
 export const L_SINGLE_BRACKET = '〈'

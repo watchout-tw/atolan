@@ -43,7 +43,7 @@ function getMeta() {
   let meta = [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { hid: 'description', name: 'description', content: siteDescription }
+    { hid: 'description', name: 'description', content: info.SITE_DESCRIPTION }
   ]
   if(config.env !== 'production') {
     meta.push({ name: 'robots', content: 'noindex' })
@@ -53,7 +53,7 @@ function getMeta() {
 
 module.exports = {
   head: {
-    title: '沃草公民學院',
+    title: info.SITE_TITLE,
     meta: getMeta(),
     link: [
       { rel: 'icon', type: 'image/x-icon', href: getFavicon('uc') },
