@@ -39,29 +39,22 @@ async function getSitemap() {
   }
 }
 
-function getRobotsTXT() {
-  let allow = {
-    UserAgent: '*',
-    Allow: '/', // accepts function
-    Sitemap: watchout.getBaseURL('uc')
+function getMeta() {
+  let meta = [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { hid: 'description', name: 'description', content: siteDescription }
+  ]
+  if(config.env !== 'production') {
+    meta.push({ name: 'robots', content: 'noindex' })
   }
-  let notallow = {
-    UserAgent: '*',
-    Disallow: '/' // accepts function
-  }
-  let robots = []
-  robots.push(config.env === 'production' ? allow : notallow)
-  return robots
+  return meta
 }
 
 module.exports = {
   head: {
     title: '沃草公民學院',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: '沃草公民學院是⋯', hid: 'description' }
-    ],
+    meta: getMeta(),
     link: [
       { rel: 'icon', type: 'image/x-icon', href: getFavicon('uc') },
       { rel: 'apple-touch-icon', sizes: '256x256', href: getProjectLogo('uc') }
@@ -89,7 +82,11 @@ module.exports = {
   gtm: {
     id: 'GTM-TTFPLQ3'
   },
-  robots: getRobotsTXT(),
+  robots: {
+    UserAgent: '*',
+    Allow: '/', // accepts function
+    Sitemap: watchout.getBaseURL('uc')
+  },
   sitemap: async function() {
     return await getSitemap()
   }
